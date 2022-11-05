@@ -1,0 +1,30 @@
+<section class="hero is-light is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <%= form_with url: root_path, method: :get do |f| %>
+                <div class="actions columns">
+                    <div class="field column is-4 is-offset-4">
+                        <h5 class="is-size-5 has-text-weight-bold">To start enter your <br> Flickr ID or Username </h5>
+                        <br />
+                        <%= f.text_field :flickr_id, class: 'input mb-5' %>
+                        <%= f.submit 'Search For Photos', class: 'button is-medium' %>
+                    </div>
+                </div>
+            <% end %>
+            <br />
+            <% if @pictures_list %>
+                <div id="user" class="mt-4 box">
+                    <div id="user-info">
+                        <h5 class="is-size-5 has-text-weight-semibold">Displaying Photos For: <%= @user.username %></h5>
+                        <%= link_to 'Go To Profile', @user.profileurl, class: 'button', target: :_blank %>
+                    </div>
+                    <div id="user-photos" class="mt-4">
+                        <% @pictures_list.each do |picture| %>
+                            <%= link_to(image_tag(Flickr.url_q(picture)), Flickr.url_b(picture), target: :_blank) %>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</section>

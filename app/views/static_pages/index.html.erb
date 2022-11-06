@@ -1,22 +1,23 @@
 <section class="hero is-light is-fullheight">
+  <h4 class="title has-text-centered">BeautyShare</h4>
   <% if params[:user_id].nil? %>
-    <div class="m-8 hero-body">
-      <div class="m-4 container has-text-centered">
+    <div class="hero-body">    
+      <div class="container has-text-centered">    
         <%= render 'search_form' %>
       </div>
     </div>
   <% else %>
     <div class="container has-text-centered">
-      <div class="m-4 container has-text-centered">
+      <div class="container has-text-centered">
         <%= render 'search_form' %>
       </div>
       <% if params[:user_id].empty? %>
-        <div class="container has-text-centered">
+        <div class="m-2 container has-text-centered">
           Flickr API Searcher is displaying latest public photos uploaded to Flickr
         </div>
       <% else %>
-        <div class="container has-text-centered">
-          Flickr API Searcher is displaying public photos uploaded by <%= params[:user_id] %> 
+        <div class="m-2 container has-text-centered">
+          Flickr API Searcher is displaying public photos uploaded by <strong><%= params[:user_id] %></strong>
         </div>
       <% end %>
     </div>

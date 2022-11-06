@@ -6,13 +6,13 @@ class StaticPagesController < ApplicationController
 
       unless params[:flickr_id].blank?
           begin 
-              user = flickr.people.findByUsername :username => params[:flickr_id]
+              user = flickr.people.findByUsername :username => params[:flickr_id]              
               flickr_id = user.id
           rescue
               flickr_id = params[:flickr_id]
           ensure
               begin
-                  @pictures_list = flickr.people.getPublicPhotos :user_id => flickr_id
+                  @pictures_list = flickr.people.getPublicPhotos :user_id => flickr_id                 
                   @user = flickr.people.getInfo :user_id => flickr_id
               rescue => e
                   message = e.message.split("-")
@@ -25,5 +25,4 @@ class StaticPagesController < ApplicationController
           end
       end
   end
-
 end
